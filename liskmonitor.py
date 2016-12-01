@@ -11,7 +11,7 @@ DELEGATE_ADDRESS = "2324852447570841050L"
 stats = None
 
 def notify (title, message, i = None):
-	print str (i) + title + message
+	print (str (i) + title + message)
 	
 	if i != None:
 		os.system ('termux-notification -t "'+title+'" -c "'+message+'" -i '+str (i))
