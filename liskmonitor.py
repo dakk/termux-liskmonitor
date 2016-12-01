@@ -47,7 +47,7 @@ while True:
 			best = heights[x]
 			besth = x
 			
-	if str (besth) != str (height):
+	if int (besth) < int (height) - 2 or int (besth) > int (height) + 2:
 		notify ('Lisk node is not in sync', 'Height: ' + str (height) + ' (best height is ' + str (besth) + ' shared by ' + str (best) + ' nodes)')
 	
 	# Mined missed blocks
@@ -70,6 +70,6 @@ while True:
 		
 		stats = row	
 		
-	notify ('Lisk Delegate Stats', 'Mined: ' + str (stats['producedblocks']) + '\nMissed: ' + str (stats['missedblocks']) + '\nHeight: ' + str (height) + ' (best height is ' + str (besth) + ' shared by ' + str (best) + ' nodes)' , 'delegatestats')
+	notify ('Lisk Delegate Stats', 'Mn: ' + str (stats['producedblocks']) + '\nMs: ' + str (stats['missedblocks']) + '\nHt: ' + str (height), 'delegatestats')
 	
 	time.sleep (5)
