@@ -4,7 +4,7 @@ import requests
 import time
 
 NODES = ["explorer.liskwallet.net:8000", "01.lskwallet.space:8000", "login.lisk.io:8000", "lisk.fastwallet.online:8000"]
-NODE = "46.16.190.190:8000"
+NODE = "51.255.38.105:8000"
 DELEGATE = "dakk"
 DELEGATE_ADDRESS = "2324852447570841050L"
 
