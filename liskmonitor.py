@@ -72,4 +72,4 @@ while True:
 		
 	notify ('Lisk Delegate Stats', 'Mn: ' + str (stats['producedblocks']) + '\nMs: ' + str (stats['missedblocks']) + '\nHt: ' + str (height), 'delegatestats')
 	
-	time.sleep (5)
+	time.sleep (30)
