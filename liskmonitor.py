@@ -48,7 +48,7 @@ while True:
 			besth = x
 			
 	if int (besth) < int (height) - 2 or int (besth) > int (height) + 2:
-		notify ('Lisk node is not in sync', 'Height: ' + str (height) + ' (best height is ' + str (besth) + ' shared by ' + str (best) + ' nodes)')
+		notify ('Lisk node is not in sync', 'Height: ' + str (height) + ' (best height is ' + str (besth) + ' shared by ' + str (best) + ' nodes)', 'lisksync')
 	
 	# Mined missed blocks
 	r = requests.get ('http://' + NODE + '/api/delegates/?limit=101&offset=0&orderBy=rate:asc')
