@@ -2,13 +2,17 @@
 import os
 import requests
 import time
+import sys
 
-NODES = ["explorer.liskwallet.net:8000", "01.lskwallet.space:8000", "login.lisk.io:8000", "lisk.fastwallet.online:8000"]
 NODE = "51.255.38.105:8000"
 DELEGATE = "dakk"
 DELEGATE_ADDRESS = "2324852447570841050L"
 
+SLEEP = 60
+NODES = ["explorer.liskwallet.net:8000", "01.lskwallet.space:8000", "login.lisk.io:8000", "lisk.fastwallet.online:8000"]
+
 stats = None
+single = False
 
 def notify (title, message, i = None):
 	print (str (i) + title + message)
@@ -17,9 +21,12 @@ def notify (title, message, i = None):
 		os.system ('termux-notification -t "'+title+'" -c "'+message+'" -i '+str (i))
 	else:
 		os.system ('termux-notification -t "'+title+'" -c "'+message+'"')
-	
 
-while True:
+
+if len (sys.argv) == 2 and sys.argv[1] == 'single':
+	single = True	
+
+while True:	
 	# Sync status
 	heights = {}
 	
@@ -47,7 +54,7 @@ while True:
 			best = heights[x]
 			besth = x
 			
-	if int (besth) < int (height) - 2 or int (besth) > int (height) + 2:
+	if abs (int (besth) - int (height)) > 1:
 		notify ('Lisk node is not in sync', 'Height: ' + str (height) + ' (best height is ' + str (besth) + ' shared by ' + str (best) + ' nodes)', 'lisksync')
 	
 	# Mined missed blocks
@@ -72,4 +79,7 @@ while True:
 		
 	notify ('Lisk Delegate Stats', 'Mn: ' + str (stats['producedblocks']) + '\nMs: ' + str (stats['missedblocks']) + '\nHt: ' + str (height), 'delegatestats')
 	
-	time.sleep (30)
+	if single:
+		break
+		
+	time.sleep (SLEEP)
