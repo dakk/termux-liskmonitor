@@ -2,6 +2,8 @@
 
 A monitor script for the android termux env with push notifications.
 
+![Screenshoot](https://raw.githubusercontent.com/dakk/termux-liskmonitor/master/screenshoot.jpg "Screenshoot")
+
 
 ## Installation
 
